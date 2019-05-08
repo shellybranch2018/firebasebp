@@ -2,7 +2,8 @@
 <html>
     <head>
 <title></title>
-<script src="https://www.gstatic.com/firebasejs/6.0.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.2.0/firebase.js"></script>
+
 
 <script>
     // Your web app's Firebase configuration
@@ -49,24 +50,59 @@
 <script>
 
 let tblUsers = document.getElementById('tbl_users_list');
-let databaseRef = firebase.databaseRef().ref('users/');
+let databaseRef = firebase.database().ref('users/');
+let user_name = document.getElementById('user_name').value;
+let user_id = document.getElementById('user_id').value;
 
 let rowIndex = 1;
 
 function save_user(){
-let saveUSer = document.getElementById('user_name').value;
+
+
+
+let uid = firebase.database().ref().child('users').push().key;
+
+let data = {
+    user_id:uid,
+    user_name:user_name
+}
+console.log(data)
+let updates = {};
+updates['users/' + uid] = data;
+databaseRef.update(updates);
+
+alert('The user was created successfuly');
+
+reload_page();
 
 }
 
 function update_user(){
 
+    let data = {
+    user_id:user_id,
+    user_name:user_name
+    }
+    
+    let updates = {};
+    updates['users/' + user_name] = data;
+    firebase.database.ref().update(updates);
+    
+    alert('The user was created updated');
+
+    reload_page();
 }
 
 function delete_user(){
+    firebase.database.ref().child('/users/' + user_id).remove();
 
+    alert('The user was successfully deleted.');
+
+    reload_page();
 }
 
 function reload_page() {
+    window.location.reload();
 
 }
 
