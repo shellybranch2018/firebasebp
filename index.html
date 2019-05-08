@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+<title></title>
+<script src="https://www.gstatic.com/firebasejs/6.0.1/firebase-app.js"></script>
+
+<script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyCKRhpB6WFjVcc5FD8BZ0vIDoX_EN8lOvU",
+      authDomain: "fir-live-demo-page.firebaseapp.com",
+      databaseURL: "https://fir-live-demo-page.firebaseio.com",
+      projectId: "fir-live-demo-page",
+      storageBucket: "fir-live-demo-page.appspot.com",
+      messagingSenderId: "995418311357",
+      appId: "1:995418311357:web:da2130d40a4a2a84"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+  </script>
+    </head>
+    <body>
+<table>
+    <tr>
+        <td>Id:</td>
+        <td><input type="text" name="id" id="user_id" /></td>
+    </tr>
+    <tr>
+        <td>User Name:</td>
+        <td><input type="text" name="user_name" id="user_name" /></td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <input type="button" value="Save" onclick="save_user()" />
+            <input type="button" value="Update" onclick="update_user()" />
+            <input type="button" value="Delete" onclick="delete_user()" />
+        </td>
+    </tr>
+</table>
+
+<h3>User List</h3>
+
+<table id="tbl_users_list">
+    <tr>
+        <td>ID</td>
+        <td>NAME:</td>
+    </tr>
+</table>
+<script>
+
+let tblUsers = document.getElementById('tbl_users_list');
+let databaseRef = firebase.databaseRef().ref('users/');
+
+let rowIndex = 1;
+
+function save_user(){
+let saveUSer = document.getElementById('user_name').value;
+
+}
+
+function update_user(){
+
+}
+
+function delete_user(){
+
+}
+
+function reload_page() {
+
+}
+
+</script>
+    </body>
+</html>
